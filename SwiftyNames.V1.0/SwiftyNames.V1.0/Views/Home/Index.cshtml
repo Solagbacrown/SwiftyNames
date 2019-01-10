@@ -1,0 +1,251 @@
+﻿@using SwiftyNames.V1._0.Models
+@model ContactModel
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+}
+
+<div class="marg">
+    <div class="container">
+        <div class="nav">
+
+            <div class="main-menu">
+
+                <ul style="background: #02230c; font-family:Cambria; ">
+                    <li><img src="/images/LOGO1.png" /></li>
+                    <li class="active">@Html.ActionLink("HOME", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("ABOUT", "About", "Home")</li>*@
+                    <li>@Html.ActionLink("CATALOGUE", "CatalogView", "NamesCatalog")</li>
+                    <li>@Html.ActionLink("CHANGE NAME", "NewsSearch", "Change")</li>
+                    <li>@Html.ActionLink("SEARCH NAMES", "SearchLogin", "Search")</li>
+                    <li>@Html.ActionLink("PUBLIC NOTICE", "PublicNewsSearch", "Home")</li>
+                    @*<li>@Html.ActionLink("FAQ", "Index", "Home")</li>*@
+
+                </ul>
+            </div> <!-- /.main-menu -->
+
+        </div>
+    </div>
+    <!-- /#menu-wrapper -->
+    @*<div class="menu-responsive hidden-md hidden-lg">
+            <ul>
+                <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                <li>@Html.ActionLink("ABOUT", "About", "Home")</li>
+                    <li>@Html.ActionLink("CONTACT", "Contact", "Home")</li>
+                <li>@Html.ActionLink("CHANGE NAME", "Login", "Account")</li>
+                <li>@Html.ActionLink("SEARCH NAMES", "Index", "Home")</li>
+                <li>@Html.ActionLink("BLOG", "Index", "Home")</li>
+                <li>@Html.ActionLink("FAQ", "Index", "Home")</li>
+            </ul>
+        </div>*@ <!-- /.menu-responsive -->
+
+
+
+
+    <div class="slidpic" id="slider">
+        <div>
+            <img id="pick" src="~/images/sl1.jpg" class="img-responsive">
+        </div>
+
+        <div>
+            <img id="pick" src="~/images/sl3.jpg" class="img-responsive">
+        </div>
+
+        <div>
+            <img id="pick" src="~/images/sl4.jpg" class="img-responsive">
+        </div>
+    </div>
+    <div style="text-align:center;">
+        <a class="btn btn-success" href="~/Change/NewsSearch" id="but"> Click here to Change Name Now</a>
+    </div>
+
+
+
+    <div class="container" id="steps">
+
+        <div class="box34">
+            <div class="col-md-4 top-style">
+                <span class="icon-box bg-color-brown set-icon flat">
+                    <i class="fa fa-book"></i>
+                </span>
+
+                <p class="top-style">
+                    What ever your reason for changing your name<strong> Nigerian Express Name Changer</strong> can help you.
+                    Click "Change Name" or "Register" and begin the journey to your new Identity.
+                </p>
+            </div>
+
+
+            <div class="col-md-4 top-style">
+                <span class="icon-box bg-color-blue set-icon flat">
+                    <i class="fa fa-gavel"></i>
+                </span>
+
+                <p class="top-style">You can change your name for the notice of the General public,your place of work or a country's Embassy etc.</p>
+            </div>
+
+            <div class="col-md-4 top-style">
+                <span class="icon-box bg-color-green set-icon flat">
+                    <i class="fa fa-book"></i>
+                </span>
+                <p class="top-style">Our services are comprehensive and affordable</p>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+<div class="container">
+    <div class="box35">
+        <div class="col-md-12">
+            <div class="col-md-4 drop-style">
+                <img src="@Url.Content("/images/default.png")" class="img-responsive" />
+            </div>
+            <div class="col-md-8">
+                <p class="drop-style">
+                    <span class="firstcharacter">
+                        <i>1</i>
+                    </span>
+                    Click Change Name Now to choose your preferred newspaper.
+                </p>
+                <p class="drop-style">
+                    <span class="firstcharacter">
+                        <i>2</i>
+                    </span>
+                    Fill the Change of name form. Filling
+                    the form require you to have a document backing up your reason of changing your
+                    name e.g Marriage certificate , Affidavit.
+                </p>
+
+                <p class="drop-style">
+                    <span class="firstcharacter">
+                        <i>3</i>
+                    </span>
+                    You will receive a  mail confirming that your name is changed.
+                </p>
+
+
+                <p class="drop-style">
+                    <span class="firstcharacter">
+                        <i>4</i>
+                    </span>
+                    Pick up your Newspaper in your neighbourhood.
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="box36">
+            
+                
+                    <div class="col-md-6"> <i style="color:forestgreen" class="fa fa-location-arrow"></i><p><a style="color:black" href="#contact">3 Adeola Adeleye Street, off Coker road,<br /> Ilupeju Lagos.</a></p></div>
+                    <div class="col-md-3"> <i style="color:forestgreen" class="fa fa-phone"></i><p style="color:black">+234 813 536 1806 <br /> +234 703 341 6581</p></div>
+                    <div class="col-md-3"> <i style="color:forestgreen" class="fa fa-envelope"></i><p> <a style="color:black" href="mailto:victoria@yoursite.com">info@swiftynames.com</a>,<br /> <a style="color:black" href="mailto:macdonald@yoursite.com">contact@swiftnames.com</a></p></div>
+            <!-- Trigger the modal with a button -->
+            <a class="btn btn-danger form-control h3" style="width:100%" data-toggle="modal" data-target="#myModal">Click to Send Us a Message</a>
+            <!-- Modal --> 
+        </div>
+        
+    </div>
+    
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+
+            <!-- Modal content-->
+
+            <div class="modal-content">
+                <div class="tableSearch">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <center><img class="modal-title" style="width:75px; height:50px; align-content:center" src="~/images/LOGO1.png"></center>
+                        <h4 class="modal-title" style="color:white; text-align:center"> Kindly Fill to Contact Us</h4>
+                    </div>
+                    <div class="modal-body">
+                        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { }))
+                        {
+
+                            
+                                <div class=" form-group">
+                                    @*<label for="Name" class="control-label col-sm-2" style="color:white">Name:</label>*@
+                                    <div class="col-sm-12">
+                                        <center>@Html.TextBoxFor(m => m.Name, new { @class = "form-control ", @required = "", placeholder = "Enter Full-Name", @autocomplete = "off" })</center>
+                                </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @*<label for="Email" class="control-label col-sm-2" style="color:white">Email:</label>*@
+                                    <div class="col-sm-12">
+                                        <center>@Html.TextBoxFor(m => m.Email, new { @class = "form-control ", @required = "email", placeholder = "Enter E-mail", @autocomplete = "off" })</center>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @*<label for="Email" class="control-label col-sm-2" style="color:white">Phone:</label>*@
+                                    <div class="col-sm-12">
+                                        <center>@Html.TextBoxFor(m => m.Phone, new { @class = "form-control ", @required = "email", placeholder = "Enter Phone Number", @autocomplete = "off" })</center>
+                                    </div>
+                                </div>
+
+                            
+                            
+                            <div class="form-group">
+                                @*<label for="Subject" class="control-label col-sm-2" style="color:white">Subject:</label>*@
+                                <div class="col-sm-12">
+                                    <center>    @Html.TextBoxFor(m => m.Subject, new { @class = "form-control ", @required = "", placeholder = "Enter Subject", @autocomplete = "off" }) </center>
+                                </div>
+                            </div>
+
+
+                            
+                            <div class="form-group">
+
+                                @*<label for="Message" class="control-label col-sm-2" style="color:white">Message:</label>*@
+                                <div class="col-sm-12">
+
+                                    <center>@Html.TextAreaFor(m => m.Subject, new { @class = "form-control ", @rows = 10, @cols = 70, @required = "", placeholder = "Enter Message", @autocomplete = "off" })</center>
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <center>  <button type="submit" class="btn btn-default" style="color:black">Submit</button></center>
+                                </div>
+                            </div>
+                            @*<div align="center">
+                                    <strong style="color:white">Endorsed by</strong><br /><br />
+                                    <img src="~/images/apcon.jpg" class="img-responsive">
+
+                                </div>*@
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <center>        <button type="button" class="btn btn-default" data-dismiss="modal" style="color:black">Close</button></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    @*<div align="center">
+            <strong>Endorsed by</strong><br /><br />
+            <img src="~/images/apcon.jpg" class="img-responsive">
+
+        </div>*@
+
+   
+    
+

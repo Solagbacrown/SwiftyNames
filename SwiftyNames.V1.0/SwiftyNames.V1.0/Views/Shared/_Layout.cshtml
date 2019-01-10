@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Name Changer</title>
+    <link rel="stylesheet" href="~/Content/font-awesome/css/font-awesome.min.css" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+    <link href="~/css/style.css" rel="stylesheet" />
+    
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquerywiz")
+    
+   
+    <script type="text/javascript">
+    $("#slider > div:gt(0)").hide();
+
+    setInterval(function () {
+        $('#slider > div:first')
+        .fadeOut(1000)
+        .next()
+        .fadeIn(1000)
+        .end()
+        .appendTo('#slider');
+    }, 3000);
+
+    </script>
+
+</head>
+<body class="bg">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#02230c;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("NIGERIA EXPRESS NAME CHANGER", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse toggle-menu menu-wrapper hide-xs">
+                <ul style="margin:10px 0px" class="navbar-collapse menu-first hidden-sm hidden-xs navbar-nav navbar-right ">
+                    <li> <span> <a style="padding-right:5px;" href="http://johanutsystems.com"> <i class="zocial icon facebook"></i></a></span></li>
+                    <li> <span><a href=" http://johanutsystems.com"><i class=" zocial icon twitter"></i> </a></span></li>
+                </ul>
+
+                @*<ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>*@
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+
+    <div class="">
+        @RenderBody()
+    </div> 
+
+        <div>
+        <footer style="margin-top:3%;">
+           
+            
+                
+            <div class="container">
+                <hr />
+                <div class="col-sm-3">
+                    <div style="color: #02230c">
+                        <h5 style="text-align: center;"> About NENC.</h5>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div style="color: #02230c">
+                        <h5 style="text-align: center;">Quotes of the day</h5>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+
+
+                    <div style="color: #02230c">
+                        <h5 style="text-align: center;">Our Portfolio</h5>
+                    </div><!-- .title -->
+
+
+                </div>
+                <div class="col-sm-3">
+                    <div style="color: #02230c">
+                        <h5 style="text-align: center;">Photo of the Day</h5>
+                    </div>
+                </div>
+            </div>              
+                
+               
+   
+   <div style="color: #02230c; margin-top: 2%; margin-bottom: 0%; text-align: center">&copy; @DateTime.Now.Year - Name Changer</div>
+   
+    </footer>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿@model SwiftyNames.V1._0.Models.ChangeName
+@{
+    ViewBag.Title = "New Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/style.css" rel="stylesheet" />
+}
+
+
+<div class="container marg">
+    <div class="nav nav-bar">
+
+        <div class="main-menu">
+
+            <ul style="background: #02230c; font-family:Cambria; color:white; ">
+                <li><img src="/images/LOGO1.png" /></li>
+                <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                @*<li>@Html.ActionLink("ABOUT", "About", "Home")</li>*@
+                <li>@Html.ActionLink("CATALOGUE", "CatalogView", "NamesCatalog")</li>
+                <li class="active">@Html.ActionLink("CHANGE NAME", "NewsSearch", "Change")</li>
+                <li>@Html.ActionLink("SEARCH NAMES", "SearchLogin", "Search")</li>
+                <li>@Html.ActionLink("PUBLIC NOTICE", "PublicNewsSearch", "Home")</li>
+                @*<li>@Html.ActionLink("FAQ", "Index", "Home")</li>*@
+
+            </ul>
+        </div> <!-- /.main-menu -->
+
+    </div>
+</div>
+
+
+<div class="container">
+    
+
+    <center> <label class="" style="font-size: 20px; font-family:'Times New Roman'; color:blue"> CLICK ANY OF THE BELOW CONTENTS TO CHOOSE THE NEWSPAPER OF YOUR CHOICE </label> </center>
+
+    
+
+    @foreach (var list in Model.newslist)
+    {
+
+        <div class="just">
+
+
+            <div class="col-md-2">
+                <div class="box22 shrink">
+                    <div class="">
+                        <a href="~/Change/Change/@list.Id"><img style=" width: 100%; height: 22%;" src="~/images/@list.PaperImageName" /></a>
+                        <p style="font-size: 30px; font-family:'Times New Roman'; text-align: center; color:white;"> &#x20A6 @Html.DisplayFor(x => list.PriceTagName) </p>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div>
+
+
+    }
+
+
+</div>
+
+
+
+
+

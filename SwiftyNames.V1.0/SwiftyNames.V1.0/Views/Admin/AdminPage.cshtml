@@ -1,0 +1,130 @@
+﻿@model SwiftyNames.V1._0.Models.ChangeName
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <div class="nav nav-bar">
+
+        <div class="main-menu">
+
+            <ul style="background: #02230c; font-family:Cambria; color:white; ">
+                <li><img src="/images/LOGO1.png" /></li>
+                <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                @*<li>@Html.ActionLink("ABOUT", "About", "Home")</li>*@
+                <li>@Html.ActionLink("CATALOGUE", "CatalogView", "NamesCatalog")</li>
+                <li>@Html.ActionLink("CHANGE NAME", "NewsSearch", "Change")</li>
+                <li>@Html.ActionLink("SEARCH NAMES", "SearchLogin", "Search")</li>
+                <li>@Html.ActionLink("PUBLIC NOTICE", "PublicNewsSearch", "Home")</li>
+                @*<li>@Html.ActionLink("FAQ", "Index", "Home")</li>*@
+
+            </ul>
+        </div> <!-- /.main-menu -->
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default text-uppercase">
+
+        <div class="panel-heading" style="font-size:xx-large">
+            Changed Name History
+
+
+        </div>
+
+        <div class="panel-body">
+            <div class="col-lg-offset-0 col-lg-12">
+
+                @using (Ajax.BeginForm("AdminPage", "Admin", new AjaxOptions { HttpMethod = "post" }, new { @class = "form-inline", @id = "formId" }))
+            {
+                    <div class="form-group date" id="">
+                        @Html.LabelFor(x => x.StartDate, new { @class = "" })
+                        @Html.TextBoxFor(model => model.StartDate, "{0:dd/MM/yyyy}", new { @Id = "datetime1", @class = "form-control input-sm" })
+                        @*<div class="input-group-addon picker"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></div>*@
+                    </div>
+                    <div class="form-group col-lg-offset-1">
+                        @Html.LabelFor(x => x.EndDate, new { @class = "" })
+                        @Html.TextBoxFor(model => model.EndDate, "{0:dd/MM/yyyy}", new { @Id = "datetime2", @class = "form-control input-sm" })
+                        @*<div class="input-group-addon picker"><span class="glyphicon glyphicon-th" aria-hidden="true"></span></div>*@
+                    </div>
+
+                    <div class="form-group col-lg-offset-1">
+                        <br />
+                        <input type="submit" value="Search" class="btn btn-primary form-control" id="butt" />
+                    </div>
+
+            }
+                <br />
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.OldFullName)</th>
+                            @* <th>@Html.DisplayNameFor(model => model.OldFirstName)</th>*@
+                            @* <th>@Html.DisplayNameFor(model => model.OldMiddleName)</th>*@
+
+                            @* <th>@Html.DisplayNameFor(model => model.NewLastName)</th>*@
+
+                            @* <th>@Html.DisplayNameFor(model => model.NewFirstName) </th>*@
+                            <th>@Html.DisplayNameFor(model => model.NewFullName)</th>
+                            <th>@Html.DisplayNameFor(model => model.Address)</th>
+                            <th>@Html.DisplayNameFor(model => model.newsName)</th>
+                            <th>@Html.DisplayNameFor(model => model.DayName)</th>
+                            <th>@Html.DisplayNameFor(model => model.Date)</th>
+
+
+                        </tr>
+
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ChangeList)
+                    {
+                            <tr>
+
+                                <td>@Html.DisplayFor(m => item.OldFullName)</td>
+                                @*<td>@Html.DisplayFor(m => item.OldLastName)</td>*@
+                                @* <td>@Html.DisplayFor(m => item.OldMiddleName)</td>*@
+                                <td>@Html.DisplayFor(m => item.NewFullName)</td>
+                                @*<td>@Html.DisplayFor(m => item.NewLastName)</td>*@
+                                @*<td>@Html.DisplayFor(m => item.NewMiddleName)</td>*@
+                                <td>@Html.DisplayFor(m => item.Address)</td>
+                                <td>@Html.DisplayFor(m => item.newsName)</td>
+                                <td>@Html.DisplayFor(m => item.DayName)</td>
+                                <td>@Html.DisplayFor(m => item.Date)</td>
+
+
+                            </tr>
+
+                    }
+
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div class="col-lg-offset-0 col-lg-12">
+                <button class="bth btn-primary" id="print">Print</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+  
+
+
+    $("#print").click(function () {
+        $(".well").hide();
+        $('#formId').hide();
+        window.print();
+    });
+
+   
+
+</script>

@@ -1,0 +1,431 @@
+﻿@model SwiftyNames.V1._0.Models.ChangeName
+@{
+    ViewBag.Title = "Change";
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+}
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#02230c;">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink(" NIGERIA EXPRESS NAME CHANGER", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse toggle-menu menu-wrapper hide-xs">
+            <ul style="margin:10px 0px" class="navbar-collapse menu-first hidden-sm hidden-xs navbar-nav navbar-right ">
+                <li> <span> <a style="padding-right:5px;" href="http://johanutsystems.com"> <i class="zocial icon facebook"></i></a></span></li>
+                <li> <span><a href=" http://johanutsystems.com"><i class=" zocial icon twitter"></i> </a></span></li>
+            </ul>
+
+            @*<ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>*@
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-top:50px;">
+    <div class="nav nav-bar">
+
+        <div class="main-menu">
+
+            <ul style="background: #02230c; font-family:Cambria; color:white; ">
+                <li><img src="/images/LOGO1.png" /></li>
+                <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                @*<li>@Html.ActionLink("ABOUT", "About", "Home")</li>*@
+                <li>@Html.ActionLink("CATALOGUE", "CatalogView", "NamesCatalog")</li>
+                <li class="active">@Html.ActionLink("CHANGE NAME", "NewsSearch", "Change")</li>
+                <li>@Html.ActionLink("SEARCH NAMES", "SearchLogin", "Search")</li>
+                <li>@Html.ActionLink("PUBLIC NOTICE", "PublicNewsSearch", "Home")</li>
+                @*<li>@Html.ActionLink("FAQ", "Index", "Home")</li>*@
+
+            </ul>
+        </div> <!-- /.main-menu -->
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="box11">
+        <center>
+            <h1 style="color:#fff; font-family: 'Trebuchet MS'; font-size: 200%; ">Change of Name Form</h1>
+        </center>
+
+        <div>
+            @if (TempData["FileError"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["FileError"].ToString();
+                    <a href="#" class="close">&times;</a>
+                </div>
+            }
+        </div>
+        <div>
+            @if (TempData["Success"] != null)
+            {
+                <div style="color:green; font-size:20px" class="alert alert-success">
+                    @TempData["Success"].ToString();
+                    <a href="#" class="close">&times;</a>
+                </div>
+            }
+        </div>
+        <div>
+            @if (TempData["Picture"] != null)
+            {
+                <div style="color:red; font-size:20px" class="alert alert-danger">
+                    @TempData["Picture"].ToString();
+                    <a href="#" class="close">&times;</a>
+                </div>
+            }
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+@using (Html.BeginForm("Change", "Change", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+      @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="box13" style="margin-top:-10px;">
+            <div class="col-md-8 top-style">
+                <div class="box15">
+                    <div class="col-sm-12">
+                        <form class="form-horizontal">
+
+  
+    <h3 align="center" style="color:darkgreen;" class="reg-style">Please fill the form below</h3>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="OldFullName">Former Full Name<em style="color:red">*</em></label>
+                                    @Html.TextBoxFor(m => m.OldFullName, new { @id = "oldsurname", @class = "form-control", @required = "", @placeholder = "Former Full Name" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="NewFullName">New Full Name<em style="color:red">*</em></label>
+                                    @Html.TextBoxFor(m => m.NewFullName, new { @id = "newSurname", @class = "form-control", @required = "", @placeholder = "New Full Name" })
+                                </div>
+                            </div>
+
+                            <hr />
+
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="" for="Phone">Phone Number<em style="color:red">*</em></label>
+                                    @Html.TextBoxFor(m => m.Phone, new { @required = "", @class = "form-control", Type = "tel", Pattern = "[0-9]{11}", @placeholder = "(e.g) +2347030000000" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="" for="Email">E-mail<em style="color:red">*</em></label>
+                                    @Html.TextBoxFor(m => m.Email, new { @required = "", @class = "form-control", Type = "email", @placeholder = "E-mail" })
+                                </div>
+                            </div>
+
+                            <hr class="colorgraph">
+
+
+                            <div class="col-md-12 top-style">
+                                <div class="form-group">
+                                    <label for="ResidentialAddress">Residential Address<em style="color:red">*</em></label>
+                                    @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @required = "", @placeholder = "Residential Address" })
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <div class="">
+                                @Html.HiddenFor(m => m.SessionKey, new { @class = "", @style = "width:100%;" })
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                               
+                                    <div>
+                                        @*<span style=" color:red">Upload any Official Means of Identification*</span>*@
+                                        <input class="btn btn-primary" style="width:100%;" type="file" name="IdentityFile" required/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div>
+                                        @*<span style=" color:red"> Upload your Marriage Certificate or Sworn Affidavit*</span>*@
+                                        <input class="btn btn-primary" style="width:100%;" type="file" name="uploadedFile" required  />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="colorgraph">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    @Html.DropDownListFor(x => x.DayId, Model.Day, "Specify Day", new { @id = "dropdownid1", @class = "form-control", @required = "" })
+                                </div>
+                            </div>
+
+                            <hr class="colorgraph">
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input style="width: 100%; background:darkgreen; color:white;" type="submit" value="Make Payment" class="btn btn-success btn-block" />
+                                </div>
+                         </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="col-md-4">
+                <div class="box14">
+                    <div class="well">
+                        
+                        <div id="t1">
+                            <h5 align="center">NOTICE!  NOTICE!!  NOTICE!!!</h5>
+                            Change of Name <br />
+                            <p style="line-height: 2em;" align="justify">
+                                I hereby wish to inform the general public that my name has been changed
+                                from <span style="color:red" id="surname">{Old Name}</span>
+
+                                to <span style="color:red" id="newsurname">{New Name}</span>.
+
+                                <br />All relevant documents still remains thesame forthwith. Please take note.
+                            </p>
+                                <p align="center"><em>Thank you all.</em></p>
+                            
+                        </div>
+
+                        <center>
+                            <div><img id="okay" src="~/images/@ViewBag.Image" /></div>
+                            
+                        </center>
+
+                    </div>
+
+                    <div style="box-shadow:none;" class="box22" id="amountPanel">
+                        <h4 style="font-size:15px; text-align:center; color:white;">Transaction Details</h4>
+
+                        <table style="font-size:17px" align="center">
+                            <tr>
+                                <td><b>Charges</b></td>
+                                <td align="center"><b>Cost (&#x20A6)</b></td>
+                            </tr>
+                            <tr style="color: black; height: 50px">
+                                <td>Newspaper:</td>
+                                <td align="right"><span id="priceId">@ViewBag.price</span></td>
+                            </tr>
+                            <tr style=" height: 50px">
+                                <td>Service Charge:</td>
+                                <td align="right"><span id="servicecharge"> 1000</span></td>
+                            </tr>
+                            <tr style="color:black; height:50px">
+                                <td>Total Charge:</td>
+                                <td align="right"><span id="total"></span></td>
+                            </tr>
+
+                        </table>
+
+
+                        <center>
+                            <div style="margin-top:0px">
+                                <h3 style="margin-top: 10%; color: white; font-size: 15px; margin-left: 1%; ">Payment Options</h3>
+                                <img style="  width: 50px; height: 28px" src="~/images/Vs.png" />
+                                <img style=" width: 50px; height: 28px" src="~/images/mc.png" />
+                                <img style=" width: 50px; height:28px" src="~/images/ver.png" />
+                            </div>
+                        </center>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+            <script>
+
+                $(document).ready(function () {
+                    $("#amountPanel").show();
+                    var price = $("#priceId").text();
+                    $("#total").text(String(parseFloat(price) + parseInt($("#servicecharge").text())));
+                });
+
+
+                $(function () {
+                    $("#oldsurname").keyup(function () {
+                        $("#surname").text($(this).val());
+                    });
+
+                    $("#newSurname").keyup(function () {
+                        $("#newsurname").text($(this).val());
+                    });
+
+                });
+
+            </script>
+
+
+            @*<div>
+                    <div align="left" class="box13" id="amountPanel">
+                        <h4 style="margin-left:20px;">Transaction Details</h4>
+                        <table align="left">
+                            <tr>
+                                <td><b>Charges</b></td>
+                                <td align="right"><b>Cost (Naira)</b></td>
+                            </tr>
+                            <tr style="color:black;">
+                                <td>Total Charge:</td>
+                                <td align="right"><span id="priceId"></span></td>
+                            </tr>
+                            @*<tr>
+                                <td>Service Charges:</td>
+                                <td align="right"><span id="servicecharge"> 500</span></td>
+                            </tr>
+                            @*<tr>
+                                <td><b>Total Charges:</b></td>
+                                <td align="right"><span id="total"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <script>
+
+                        $(document).ready(function () {
+                            $("#amountPanel").show();
+                        });
+
+
+                        jQuery('#dropdownid1').change(function () {
+                            var selected = $('#dropdownid1 :selected').text();
+                            var price = selected.substr(selected.length - 4);
+                            $("#priceId").text(price);
+                            $("#total").text(String(parseFloat(price) + parseInt($("#servicecharge").text())));
+                            $("#amountPanel").show();
+                        });
+
+
+                        $(function () {
+
+
+                            $('#surname').keyup(function () {
+                                $('#oldsurname').text($(this).val());
+                            });
+
+                            $('#oldFirst').keyup(function () {
+                                $('#oldfirst').text($(this).val());
+                            });
+
+                            $('#oldMiddle').keyup(function () {
+                                $('#oldmiddle').text($(this).val());
+                            });
+                            $('#newSurname').keyup(function () {
+                                $('#newsurname').text($(this).val());
+                            });
+                            $('#newFirst').keyup(function () {
+                                $('#newfirst').text($(this).val());
+                            });
+                            $('#newMiddle').keyup(function () {
+                                $('#newmiddle').text($(this).val());
+                            });
+                        });
+
+                    </script>
+
+
+                </div>*@
+
+
+
+
+        </div>
+
+    </div>
+
+    <div>
+        <footer style="margin-top:3%;">
+
+
+
+            <div class="container">
+                <hr />
+                <div class="col-sm-3">
+                    <div style="color: #02230c">
+                        <h5 style="text-align: center;"> About NENC.</h5>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div style="color: #02230c">
+                        <h5 style="text-align: center;">Quotes of the day</h5>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+
+
+                    <div style="color: #02230c">
+                        <h5 style="text-align: center;">Our Portfolio</h5>
+                    </div><!-- .title -->
+
+
+                </div>
+                <div class="col-sm-3">
+                    <div style="color: #02230c">
+                        <h5 style="text-align: center;">Photo of the Day</h5>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div style="color: #02230c; margin-top: 2%; margin-bottom: 0%; text-align: center">&copy; @DateTime.Now.Year - Name Changer</div>
+
+        </footer>
+    </div>
+}
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

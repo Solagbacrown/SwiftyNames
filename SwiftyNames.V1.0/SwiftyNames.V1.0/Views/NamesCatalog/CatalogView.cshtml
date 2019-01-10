@@ -1,0 +1,76 @@
+﻿@model SwiftyNames.V1._0.Models.ChangeName
+@{
+    ViewBag.Title = "CatalogView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+}
+<div class="container">
+    <div class="nav nav-bar">
+
+        <div class="main-menu">
+
+            <ul style="background: #02230c; ">
+                <li><img src="/images/LOGO1.png" /></li>
+                <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                @*<li>@Html.ActionLink("ABOUT", "About", "Home")</li>*@
+                <li class="active">@Html.ActionLink("CATALOGUE", "CatalogView", "NamesCatalog")</li>
+                <li>@Html.ActionLink("CHANGE NAME", "NewsSearch", "Change")</li>
+                <li>@Html.ActionLink("SEARCH NAMES", "SearchLogin", "Search")</li>
+                <li>@Html.ActionLink("PUBLIC NOTICE", "PublicNewsSearch", "Home")</li>
+                @*<li>@Html.ActionLink("FAQ", "Index", "Home")</li>*@
+
+            </ul>
+        </div> <!-- /.main-menu -->
+
+    </div>
+</div>
+<div  style="margin-top:-13px;" class="container">
+    <div class="mybox">
+        <h2 style="font-family: 'Trebuchet MS'; text-shadow: 1px 1px 1px black;">Welcome!  Check our Catalogues of Name formats</h2>
+    </div>
+
+
+    <div class="box24">
+        <div class="mybox1">
+            <h3 style="margin-left: 0%; font-family: 'Trebuchet MS';">Name Catalogue </h3>
+            <a class="btn-success form-control" style="color:white; text-align:center" href="~/Change/Change">CLICK HERE TO CHANGE NAME</a>
+        </div>
+        <div>
+            <ul class="col-md-12 list-unstyled table-list" style="">
+                <img class="slidr hidden-xs hidden-sm" style="float: right;" src="~/images/photo/name2.png" />
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as AJAGBE AKINREMI ELERUJA wish to inform the general public that my name is now AJAGBE OLUREMI VICTOR. Thanks </li>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as FASONU DEDEORI MAPAYI wish to inform the general public that my name is now FASONU OLASUNKANMI GBEMI. Thanks </li>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as FRANKLYN REMILEKUN GLORIA wish to inform the general public that my name is now OLAWOYE REMILEKUN GLORIA. Thanks </liclass>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as BASOJE UWAKAGADO CYNTHIA wish to inform the general public that my name is now BASOJE GLORY CYNTHIA. Thanks </li>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as OLA BABATUNJI OLUWAKAYODE wish to inform the general public that my name is now OLA TUNJI PROSPER. Thanks </li>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as AJAGBE AKINREMI ELERUJA wish to inform the general public that my name is now AJAGBE OLUREMI PROSPER. Thanks </li>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as AJAGBE AKINREMI ELERUJA wish to inform the general public that my name is now AJAGBE OLUREMI PROSPER. Thanks </li>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as AJAGBE AKINREMI ELERUJA wish to inform the general public that my name is now AJAGBE OLUREMI PROSPER. Thanks </li>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as AJAGBE AKINREMI ELERUJA wish to inform the general public that my name is now AJAGBE OLUREMI PROSPER. Thanks </li>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as AJAGBE AKINREMI ELERUJA wish to inform the general public that my name is now AJAGBE OLUREMI PROSPER. Thanks </li>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as AJAGBE AKINREMI ELERUJA wish to inform the general public that my name is now AJAGBE OLUREMI PROSPER. Thanks </li>
+                <li class="col-md-3 well shrink" style="list-style: none; margin: .3%; text-align: justify; ">I, formerly known as AJAGBE AKINREMI ELERUJA wish to inform the general public that my name is now AJAGBE OLUREMI PROSPER. Thanks </li>
+            </ul>
+
+        </div>
+
+
+
+
+        <div>
+
+
+            @*@foreach (var list in ViewData["batch"] as List<SelectListItem>)
+                {
+                    var e = new List<string>();
+                    <li style="display: block;height:15px;">@Html.CheckBox(list.Value)</li>
+                    <li style="display: block; height: 15px; font-size: 12px;margin-left:25px;margin-top:-15px">@Html.Label(list.Text)</li>
+                    e.Add(list.Selected.ToString());
+                   TempData["r"] = e;
+
+                }*@
+
+
+        </div>
+    </div>
+</div>

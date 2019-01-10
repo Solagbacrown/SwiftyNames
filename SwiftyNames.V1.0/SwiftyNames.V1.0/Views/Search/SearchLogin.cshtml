@@ -1,0 +1,99 @@
+﻿@model SwiftyNames.V1._0.Models.SearchLoginViewModel
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/style.css" rel="stylesheet" />
+}
+
+<div class="container marg">
+    <div class="nav nav-bar">
+
+        <div class="main-menu">
+
+            <ul style="background: #02230c; font-family:Cambria; color:white; ">
+                <li><img src="/images/LOGO1.png" /></li>
+                <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                @*<li>@Html.ActionLink("ABOUT", "About", "Home")</li>*@
+                <li>@Html.ActionLink("CATALOGUE", "CatalogView", "NamesCatalog")</li>
+                <li>@Html.ActionLink("CHANGE NAME", "NewsSearch", "Change")</li>
+                <li class="active">@Html.ActionLink("SEARCH NAMES", "SearchLogin", "Search")</li>
+                <li>@Html.ActionLink("PUBLIC NOTICE", "PublicNewsSearch", "Home")</li>
+                @*<li>@Html.ActionLink("FAQ", "Index", "Home")</li>*@
+
+            </ul>
+        </div> <!-- /.main-menu -->
+
+    </div>
+</div>
+
+<h2>@ViewBag.Title</h2>
+<div class="container">
+    <div class="col-md-12">
+    <div class="col-md-5" style="margin:0px 0px 0px -30px;">
+        <div class="form-bg">
+            <section class="reg-header"> <h4 class="text-center" style="font-size:4em; color:#fff"><span class="icon-user bg-color-grey set-icon flat "><i class="fa fa-user"></i></span></h4></section>
+
+            <section id="loginForm" class="form-x constr">
+                @using (Html.BeginForm("SearchLogin", "Search", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @*@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })*@
+                        <div class="">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control login-input input-lg", placeholder = "Username or Email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
+                        <div class="">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control pass input-lg", placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            <div class="checkbox">
+                                @Html.CheckBoxFor(m => m.RememberMe)
+                                @Html.LabelFor(m => m.RememberMe)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="">
+                            <input type="submit" value="Log in" class="btn bg-color-brown btn-block btn-lg" />
+                        </div>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Register as a new user", "SearchRegister")
+                    </p>
+                    @* Enable this once you have account confirmation enabled for password reset functionality
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>*@
+                }
+            </section>
+
+
+
+        </div>
+
+    </div>
+
+    <div class="col-md-7">
+        <img src="@Url.Content("~/images/couple.jpg")" class="img-responsive img-thumbnail hidden-sm hidden-xs" style="width:1200px; height:408px; margin:0px 0px 0px 58px;"/>
+    </div>
+    @*<div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>*@
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

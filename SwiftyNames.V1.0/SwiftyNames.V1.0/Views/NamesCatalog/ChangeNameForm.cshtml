@@ -1,0 +1,84 @@
+﻿@*@model SwiftyNames.V1._0.Models.ChangeName
+@{
+    ViewBag.Title = "ChangeNameForm";
+}
+
+<h2>ChangeNameForm</h2>
+
+        @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>Change Of Name Form</h4>
+                    <hr />
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OldLastName, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.OldLastName)
+                            @Html.ValidationMessageFor(model => model.OldLastName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OldFirstName, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.OldFirstName)
+                            @Html.ValidationMessageFor(model => model.OldFirstName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NewLastName, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NewLastName)
+                            @Html.ValidationMessageFor(model => model.NewLastName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NewFirstName, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NewFirstName)
+                            @Html.ValidationMessageFor(model => model.NewFirstName)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Address)
+                            @Html.ValidationMessageFor(model => model.Address)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Phone)
+                            @Html.ValidationMessageFor(model => model.Phone)
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Email)
+                                @Html.ValidationMessageFor(model => model.Email)
+                            </div>
+                        </div>
+                    </div>
+                    <input type="file" name="uploadedFile" />
+                    <br />
+                    @Html.LabelFor(x => x.Prefferednews)
+                    <br />
+                    @Html.DropDownListFor(model => model.Prefferednews, Model.NewsPapers, "Select Dailies", new { @class = "form-control  input-lg" })
+                    <br />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Change" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }*@

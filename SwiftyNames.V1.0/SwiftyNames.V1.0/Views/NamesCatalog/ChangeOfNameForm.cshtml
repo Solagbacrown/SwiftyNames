@@ -1,0 +1,349 @@
+﻿@model SwiftyNames.V1._0.Models.NameChanger
+@{
+    ViewBag.Title = "ChangeOfNameForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    
+<script type="">
+    
+</script>
+
+<div class="container" id="myWizard">
+
+    <h3>Change of Name Form</h3>
+
+
+    <hr>
+
+    <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="5" style="width: 20%;">
+            Step 1 of 5
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav nav-pills">
+                <li class="active"><a class="c0" href="#step1" data-toggle="tab" data-step="1">Step 1</a></li>
+                <li><a href="#step2" class="c1" data-toggle="tab" data-step="2">Step 2</a></li>
+                <li><a href="#step3" class="c2" data-toggle="tab" data-step="3">Step 3</a></li>
+                <li><a href="#step4" class="c3" data-toggle="tab" data-step="4">Step 4</a></li>
+                <li><a href="#step5" class="c4" data-toggle="tab" data-step="5">Step 5</a></li>
+            </ul>
+        </div>
+    </div>
+  @using (Ajax.BeginForm("AvailableNewsPaper", "NamesCatalog", new AjaxOptions { HttpMethod = "post" }, new { enctype = "multipart/form-data" }))
+  {
+  
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="step1">
+
+            <div class="well">
+
+                @Html.LabelFor(x=>x.Nationality)
+                @Html.DropDownListFor(model => model.CountryId, Model.NAtionalities,Model.Nationality, new { @class = "form-control  input-lg" })
+                <br>
+                 @Html.LabelFor(x=>x.YourPresentCountry)
+                <div class="checkbox">
+                    <label class="checkbox-label" style="font-weight:bold">YES</label><input type="checkbox" id="yes" value="" data-toggl />
+                </div>
+                <br />
+                <div>
+                  <input type="checkbox" id="no" value="" /><label>&nbsp;</label><label class="checkbox-label" >NO</label>
+                </div>
+                <i id="h" style="color:red">No? Please select your present country</i>
+                @Html.DropDownListFor(model => model.CountryId, Model.countries, "Select Country", new {@Id="hideDp", @class = "form-control  input-lg"})
+                <i id="hv" style="color:red"></i>
+
+            </div>
+
+            <button class="btn btn-default btn-lg next c1">Continue</button>
+        </div>
+        <div class="tab-pane fade" id="step2">
+            <div class="well">
+
+                @Html.LabelFor(x => x.AreYouMarried)
+                <br />
+                @Html.DropDownListFor(model => model.AreYouMarried, Model.AreyoumarriedList)
+                <br>
+                @Html.LabelFor(x => x.Divorcepuporse)
+                <br />
+                @Html.DropDownListFor(model => model.Divorcepuporse, Model.DivoiceList)
+                <br>
+                @Html.LabelFor(x => x.Legalpuporse)
+                <br />
+                @Html.DropDownListFor(model => model.Legalpuporse, Model.LegalpuporseList)
+                <br />
+                <i id="cantL" style="color:red"> Warning:  We are sorry but Nigeria Express Name changer cannot help with your name change application. Please seek the advice of our lawyer.</i>
+                <br>
+                @Html.LabelFor(x => x.haveyoubeenconvicted)
+                <br />
+                @Html.DropDownListFor(model => model.haveyoubeenconvicted, Model.ConvictedList)
+                <br/>
+                <i id="cantC" style="color:red"> Warning:  We are sorry but Nigeria Express Name changer cannot help with your name change application. Please seek the advice of our lawyer.</i>
+
+               
+
+            </div>
+            <button  class="btn btn-default next c2">Continue</button>
+        </div>
+        <div class="tab-pane fade" id="step3">
+            <div class="well">
+                    @Html.LabelFor(x => x.yourcurrentName)
+                    <br />
+                    @Html.TextBoxFor(model => model.yourcurrentName, new { @class = "form-control  input-lg" })
+                    <br>
+                    @Html.LabelFor(x => x.street)
+                    <br />
+                    @Html.TextAreaFor(model => model.street, new { @class = "form-control  input-lg" })
+                    <br>
+                    @Html.LabelFor(x => x.country)
+                    <br />
+                    @Html.DropDownListFor(model => model.CountryId, Model.Homecountries,"Select Country", new { @class = "form-control  input-lg" })
+                    <br />
+                   
+                    @Html.LabelFor(x => x.State)
+                    <br />
+                    @Html.DropDownListFor(model => model.State, Model.StateList,"Select State", new { @class = "form-control  input-lg" })
+                    <br />
+                  @Html.LabelFor(x => x.PersonalPhoneNumber)
+                  <br />
+                  @Html.TextBoxFor(model => model.PersonalPhoneNumber, new { @class = "form-control  input-lg" })
+
+                </div>
+            <button class="btn btn-default next c3" >Continue</button>
+        </div>
+        <div class="tab-pane fade" id="step4">
+            <div class="well">
+
+                @Html.LabelFor(x => x.ProposedName)
+                <br />
+                @Html.TextBoxFor(model => model.ProposedName, new { @class = "form-control  input-lg" })
+                <br>
+                @Html.LabelFor(x => x.ConfirmProposedName)
+                <br />
+                @Html.TextBoxFor(model => model.ConfirmProposedName, new { @class = "form-control  input-lg" })
+                <br>
+                @Html.LabelFor(x => x.NoticeOf)
+                <br />
+                <div style="border:solid 0.5px">
+                    @foreach (var item in Model.NoticeLevel)
+                    {
+                        var insertme = item.Selected ? "checked=\"checked\"" : @String.Empty;
+                        var forname = "for=\"group" + @item.Value + "\"";
+                        var idName = "id=\"group" + @item.Value + "\"";
+
+                        <ul class="list-unstyled">
+                            <li style="font-family:Candara;font-weight:lighter;color:royalblue">
+                                <label class="checkbox" @forname>
+                                    <input id="checker" type="checkbox" name="groups" value="@item.Value"
+                                           @idName @insertme />
+                                    @item.Text
+                                </label>
+                            </li>
+                        </ul>
+                    }
+                </div>
+                <br />
+                @Html.LabelFor(x => x.WhyAreyouChangingYourName)
+                <br />
+                <div style="border:solid 0.5px;text-align:justify">
+                    @foreach (var item in Model.Reasons)
+                    {
+                        var insertme = item.Selected ? "checked=\"checked\"" : @String.Empty;
+                        var forname = "for=\"group" + @item.Value + "\"";
+                        var idName = "id=\"group" + @item.Value + "\"";
+
+                        <ul class="list-unstyled">
+                            <li style="font-family:Candara;font-weight:lighter;color:royalblue">
+                                <label class="checkbox" @forname>
+                                    <input id="checker" type="checkbox" name="groups" value="@item.Value"
+                                           @idName @insertme />
+                                    @item.Text
+                                </label>
+                            </li>
+                        </ul>
+                    }
+                </div>
+                <br />
+               
+               @Html.LabelFor(x => x.UploadCertificates)
+                <br/>
+               <input type="file" name="uploadedFile" />
+                <br />
+                   @Html.LabelFor(x => x.Prefferednews)
+                    <br />
+                    @Html.DropDownListFor(model => model.Prefferednews, Model.NewsPapers,"Select Dailies", new { @class = "form-control  input-lg" })
+                    <br />
+                    @Html.LabelFor(x => x.dateRealease)
+                    <br />
+                    @Html.DropDownListFor(model => model.dateRealease, Model.PreferedDate,"Select", new { @class = "form-control  input-lg" })
+
+                </div>
+            <button  class="btn btn-default next c4" >Continue</button>
+        </div>
+        <div class="tab-pane fade" id="step5">
+            <div class="well">
+                @Html.LabelFor(x => x.DoYouWhatItDelivered)
+                <div class="checkbox">
+                    <label class="checkbox-label" style="font-weight:bold">YES</label><input type="checkbox" id="yes" value="" data-toggl />
+                </div>
+                <br />
+                <div>
+                    <input type="checkbox" id="no" value="" /><label>&nbsp;</label><label class="checkbox-label">NO</label>
+                </div>
+                <br />
+
+                @Html.LabelFor(x => x.DoYouWhatItDeliveredAtAnEmbassy)
+                <div class="checkbox">
+                    <label class="checkbox-label" style="font-weight:bold">YES</label><input type="checkbox" id="yes" value="" data-toggl />
+                </div>
+                <br />
+                <div>
+                    <input type="checkbox" id="no" value="" /><label>&nbsp;</label><label class="checkbox-label">NO</label>
+                </div>
+                <br />
+                @Html.LabelFor(x => x.HowGettoKnowUs)
+                <br>
+                @Html.DropDownListFor(model => model.HowGettoKnowUs, Model.Hearabout, "Select", new { @class = "form-control  input-lg" })
+                <br />
+                @Html.LabelFor(x => x.AcommentOnOurService)
+                <br>
+                @Html.TextAreaFor(model => model.AcommentOnOurService, new { @class = "form-control  input-lg" })
+            </div>
+
+            <a class="btn btn-success first c0" href="#"><< Back to Step 1</a>
+            <input type="submit" value="Submit form" class="btn btn-danger form-control" />
+        </div>
+            
+    </div>
+  }
+
+    <hr>
+
+    <a href="http://www.bootply.com/wj9gWh8ulj">Edit on Bootply</a>
+
+    <hr>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        
+        $("#hideDp").hide();
+        $("#h").hide();
+        $('#cantL').hide();
+        $('#cantC').hide();
+        $('#no').prop('checked', false);
+    });
+   
+    $('.next').click(function () {
+
+        var nextId = $(this).parents('.tab-pane').next().attr("id");
+
+        $('[href=#' + nextId + ']').tab('show');
+        return false;
+
+    });
+
+    $('.c0').click(function () {
+
+        $('.progress-bar').css({ width: 20 + '%' });
+        $('.progress-bar').html("" + "1" + " of 5");
+
+    });
+
+
+    $('.c1').click(function () {
+
+        $('.progress-bar').css({ width: 40 + '%' });
+        $('.progress-bar').html("" + "2" + " of 5");
+
+    });
+
+    $('.c2').click(function () {
+
+        $('.progress-bar').css({ width: 60 + '%' });
+        $('.progress-bar').html("" + "3" + " of 5");
+
+    });
+    $('.c3').click(function () {
+
+        $('.progress-bar').css({ width: 80 + '%' });
+        $('.progress-bar').html("" + "4" + " of 5");
+
+    });
+    $('.c4').click(function () {
+
+        $('.progress-bar').css({ width: 100 + '%' });
+        $('.progress-bar').html("" + "5" + " of 5");
+
+    });
+    //$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+    //    //update progress
+    //    var step = $(e.target).attr('href');
+    //    alert(step);
+    //    var percent = (parseInt(step) / 5) * 100;
+
+    //    $('.progress-bar').css({ width: percent + '%' });
+    //    $('.progress-bar').html("Step " + step + " of 5");
+
+    //    //e.relatedTarget // previous tab
+
+    //});
+
+    $('.first').click(function () {
+
+        $('#myWizard a:first').tab('show')
+
+    });
+  
+
+    $("#no").click(function () {
+        if (this.checked) {
+            $('#yes').prop('checked', false);
+            $("#hideDp").show();
+            $("#h").show();
+            $('select[name=CountryId]').change(function () {
+                if ($('select[name=CountryId] option:selected').val() == '') {
+                    $('#hv').text()="Please Select Country to proceed";
+            
+                }
+            });
+        }
+    });
+   
+  
+
+
+    $("#yes").click(function () {
+        if (this.checked) {
+            $('#no').prop('checked', false);
+            $("#hideDp").hide();
+            $("#h").hide();
+        }
+    });
+
+    $(function ($) {
+        $('select[name=Legalpuporse]').change(function () {
+            if ($('select[name=Legalpuporse] option:selected').val() == '1') {
+                $('#cantL').show();
+            } else if ($('select[name=Legalpuporse] option:selected').val() == '0') {
+                $('#cantL').hide();
+            }
+        });
+    });
+ 
+    $(function ($) {
+        $('select[name=haveyoubeenconvicted]').change(function () {
+            if ($('select[name=haveyoubeenconvicted] option:selected').val() == '1') {
+                $('#cantC').show();
+            } else if ($('select[name=haveyoubeenconvicted] option:selected').val() == '0') {
+                $('#cantC').hide();
+            }
+        });
+    });
+
+</script>

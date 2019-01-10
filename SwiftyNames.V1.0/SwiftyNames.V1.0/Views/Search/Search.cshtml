@@ -1,0 +1,63 @@
+﻿@model SwiftyNames.V1._0.Models.ChangeName
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+}
+<div class="container">
+    <div class="nav nav-bar">
+
+        <div class="main-menu">
+
+            <ul style="background: #02230c; font-family:Cambria; color:white; ">
+                <li><img src="/images/LOGO1.png" /></li>
+                <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                @*<li>@Html.ActionLink("ABOUT", "About", "Home")</li>*@
+                <li>@Html.ActionLink("CATALOGUE", "CatalogView", "NamesCatalog")</li>
+                <li>@Html.ActionLink("CHANGE NAME", "NewsSearch", "Change")</li>
+                <li class="active">@Html.ActionLink("SEARCH NAMES", "SearchLogin", "Search")</li>
+                <li>@Html.ActionLink("PUBLIC NOTICE", "PublicNewsSearch", "Home")</li>
+                @*<li>@Html.ActionLink("FAQ", "Index", "Home")</li>*@
+
+            </ul>
+        </div> <!-- /.main-menu -->
+
+    </div>
+</div>
+
+   <div class="container">
+    <div class="panel-heading box13" style="font-size:xx-large">
+       
+        
+        @using (Ajax.BeginForm("Search", "Search", new AjaxOptions { HttpMethod = "post" }, new { @class = "navbar-form", role = "search" }))
+{
+            <center>
+                <div class="form-control-feedback" style="align-items:flex-end;">
+                   @Html.TextBoxFor(model => model.Search, new { @class = "form-control", placeholder = "Search name changed on NENC", name = "srch-term" })<button class="btn btn-default" type="submit"><i style="margin-right:100%" class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </center>
+}
+
+        <br>
+
+        @foreach (var item in Model.customerlist)
+        {
+
+            <div style="margin-bottom:5px; background:#e6dcdc; padding:5px;" class="tableSearch">
+                <span><img style="width:80px; height:55px; border:1px solid;" src="~/images/@item.newsImage" /></span>
+                <label class="formal"><small> @Html.DisplayFor(m => item.OldFullName) <small>to</small> @Html.DisplayFor(m => item.NewFullName) </small></label>
+            </div>
+           
+        }
+    </div>
+</div>
+
+
+   
+@*<footer class=" boxfooter">
+    <center> <p style="margin-top:14.5%; color:white">&copy; @DateTime.Now.Year - Name Changer</p></center>
+</footer>*@
+
+

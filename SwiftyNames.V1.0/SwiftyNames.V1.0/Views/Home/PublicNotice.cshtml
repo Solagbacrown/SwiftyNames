@@ -1,0 +1,162 @@
+﻿@model SwiftyNames.V1._0.Models.ChangeName
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+}
+
+<div class="container">
+    <div class="nav nav-bar">
+
+        <div class="main-menu">
+
+            <ul style="background: #02230c; font-family:Cambria; color:white; ">
+                <li><img src="/images/LOGO1.png" /></li>
+                <li>@Html.ActionLink("HOME", "Index", "Home")</li>
+                @*<li>@Html.ActionLink("ABOUT", "About", "Home")</li>*@
+                <li>@Html.ActionLink("CATALOGUE", "CatalogView", "NamesCatalog")</li>
+                <li>@Html.ActionLink("CHANGE NAME", "NewsSearch", "Change")</li>
+                <li>@Html.ActionLink("SEARCH NAMES", "SearchLogin", "Search")</li>
+                <li class="active">@Html.ActionLink("PUBLIC NOTICE", "PublicNewsSearch", "Home")</li>
+                @*<li>@Html.ActionLink("FAQ", "Index", "Home")</li>*@
+
+            </ul>
+        </div> <!-- /.main-menu -->
+
+    </div>
+</div>
+
+
+<div class="container">
+    
+    <div>
+        @if (TempData["Success"] != null)
+    {
+            <div style="color:green; font-size:20px" class="alert alert-success">
+                @TempData["Success"].ToString();
+                <a href="#" class="close">&times;</a>
+            </div>
+    }
+    </div>
+
+    <br>
+    <div class="box13" style="padding-top:2px; padding-bottom:12px;">
+
+        <div class="col-md-4">
+
+            <br>
+        </div>
+        
+        <div class="col-md-4">
+            <h4 style="color:#003300; text-align:center">Public Notice Form</h4>
+            
+            <div class="box115" style="margin-bottom:4px;">
+                @using (Html.BeginForm("PublicNotice", "Home", FormMethod.Post, new { }))
+            {
+
+                            @*<label for="Name" class="control-label col-sm-2" style="color:white">Name:</label>*@
+                            @Html.TextBoxFor(m => m.NoticeName, new { @class ="form-control", @required = "", placeholder = "ENTER FULLNAME", @autocomplete = "off" })
+                        
+                    <br />
+                    @*<label for="Email" class="control-label col-sm-2" style="color:white">Email:</label>*@
+                    @Html.TextBoxFor(m => m.NoticeEmail, new { @class = "form-control ", @required = "", placeholder = "ENTER EMAIL", @autocomplete = "off", Type = "email" })
+
+
+
+                    <br />
+                    @Html.TextBoxFor(m => m.NoticePhone, new { @class = "form-control ", @required = "", placeholder = "ENTER PHONE NUMBER", @autocomplete = "off", Type = "tel", Pattern = "[0-9]{11}" })
+
+
+
+
+                    <br />
+                    @Html.TextAreaFor(m => m.NoticeWord, new { @class = "form-control ", @rows = 4, @cols = 500, @required = "", placeholder = "ENTER PUBLIC NOTICE", @autocomplete = "off" })
+
+
+                    <br />
+                    <div class="">
+                        <div class="">
+                            <div class="">
+                                @Html.DropDownListFor(x => x.NoticeDayId, Model.Day, "Specify Day", new { @id = "dropdownid1", @class = "form-control", @required = "" })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="">
+                        <div class="">
+                            <input type="button" class="btn btn-success btn-large btn-block" style="color:black" value="Submit" />
+                        </div>
+                    </div>
+
+
+            }
+            </div>
+
+            <center>
+                <div>
+                    <span><img style="width: 153px; height: 120px; border:10px solid #808080" src="~/images/@ViewBag.Image" /></span>
+                    <img style="width:153px; height:120px; border:10px solid #808080" src="~/images/LOGO1.png" />
+                </div>
+            </center>
+
+        </div>
+            @*<div>
+
+                <div align="left" class="box13" id="amountPanel">
+                    <h4 style="font-size:30px; margin-left:20px;">Transaction Details</h4>
+
+                    <table style="font-size:25px" align="center">
+                        <tr>
+                            <td><b>Charges</b></td>
+                            <td align="center"><b>Cost (&#x20A6)</b></td>
+                        </tr>
+                        <tr style="color: black; height: 50px">
+                            <td>Newspaper:</td>
+                            <td align="right"><span id="priceId">@ViewBag.price</span></td>
+                        </tr>
+                        <tr style=" height: 50px">
+                            <td>Service Charge:</td>
+                            <td align="right"><span id="servicecharge"> 1000</span></td>
+                        </tr>
+                        <tr style="color:black; height:50px">
+                            <td>Total Charge:</td>
+                            <td align="right"><span id="total"></span></td>
+                        </tr>
+
+                    </table>
+
+
+                    <center>
+                        <div style="margin-top:150px">
+                            <h4 style="margin-top: 80px; color: white; font-size: 15px; margin-left: 20px; ">Payment Options</h4>
+                            <img style="  width: 50px; height: 28px" src="~/images/Vs.png" />
+                            <img style=" width: 50px; height: 28px" src="~/images/mc.png" />
+                            <img style=" width:50px; height:28px" src="~/images/ver.png" />
+                        </div>
+                    </center>
+                </div>
+
+                <script>
+
+                    $(document).ready(function () {
+                        $("#amountPanel").show();
+                        var price = $("#priceId").text();
+                        $("#total").text(String(parseFloat(price) + parseInt($("#servicecharge").text())));
+                    });
+
+
+                </script>
+
+
+            </div>*@
+        <div class="col-md-4"><br /></div>
+        </div>
+
+
+    
+
+</div>

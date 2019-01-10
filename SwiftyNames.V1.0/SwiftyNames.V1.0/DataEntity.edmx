@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SwiftyNamesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CustomerDetails">
+          <Key>
+            <PropertyRef Name="InfoId" />
+          </Key>
+          <Property Name="InfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SessionKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NewsPaperId" Type="int" Nullable="false" />
+          <Property Name="DayId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="OldFullName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NewFullName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DayType">
+          <Key>
+            <PropertyRef Name="DayTypeId" />
+          </Key>
+          <Property Name="DayTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DayTypePrice" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deliveries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateOrdered" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Forms">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrentAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsMarried" Type="bit" Nullable="false" />
+          <Property Name="IsDivorced" Type="bit" Nullable="false" />
+          <Property Name="IsCourtAvoid" Type="bit" Nullable="false" />
+          <Property Name="IsConvicted" Type="bit" Nullable="false" />
+          <Property Name="CurrentName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Street" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="PhoneNumbers" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ProposedName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DeliveryphoneAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DeliveryAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateOrdered" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsDeliveredOutside" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EmbassyDelivery" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DeliveryCountry" Type="int" Nullable="false" />
+          <Property Name="FullAddress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EmbassyAdrress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HowUHear" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ServiceComment" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Nationality_NationalityId" Type="int" Nullable="false" />
+          <Property Name="State_Id" Type="int" Nullable="false" />
+          <Property Name="Reason_Id" Type="int" Nullable="false" />
+          <Property Name="NewsPapersPrice_Id" Type="int" Nullable="false" />
+          <Property Name="Delivery_Id" Type="int" Nullable="false" />
+          <Property Name="TheNoticeOf" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nationalities">
+          <Key>
+            <PropertyRef Name="NationalityId" />
+          </Key>
+          <Property Name="NationalityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country" Type="nvarchar(max)" />
+          <Property Name="Abbreviation" Type="nvarchar(max)" />
+          <Property Name="Adjective" Type="nvarchar(max)" />
+          <Property Name="Person" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NewsPapersPrices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NewsPaper" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PriceTag" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaperImage" Type="nvarchar" MaxLength="100" />
+          <Property Name="PaperSlogan" Type="nvarchar(max)" />
+          <Property Name="NoticePrice" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NoticeLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoticeName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PublicNotice">
+          <Key>
+            <PropertyRef Name="NoticeId" />
+          </Key>
+          <Property Name="NoticeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoticeEmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NoticePhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoticeWord" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NoticeName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="NoticeDayId" Type="int" Nullable="false" />
+          <Property Name="NoticeDate" Type="datetime" Nullable="false" />
+          <Property Name="NoticePaperId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reasons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameChangeReasons" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Upload">
+          <Key>
+            <PropertyRef Name="UploadId" />
+          </Key>
+          <Property Name="UploadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionKey" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NameOfFile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdentityFile" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DeliveryForm">
+          <End Role="Deliveries" Type="Self.Deliveries" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deliveries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="Delivery_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NationalityForm">
+          <End Role="Nationalities" Type="Self.Nationalities" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nationalities">
+              <PropertyRef Name="NationalityId" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="Nationality_NationalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsPapersPriceForm">
+          <End Role="NewsPapersPrices" Type="Self.NewsPapersPrices" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsPapersPrices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="NewsPapersPrice_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReasonForm">
+          <End Role="Reasons" Type="Self.Reasons" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reasons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="Reason_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateForm">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Forms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="State_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SwiftyNamesModelStoreContainer">
+          <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DayType" EntityType="Self.DayType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deliveries" EntityType="Self.Deliveries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forms" EntityType="Self.Forms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nationalities" EntityType="Self.Nationalities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsPapersPrices" EntityType="Self.NewsPapersPrices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NoticeLevel" EntityType="Self.NoticeLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PublicNotice" EntityType="Self.PublicNotice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reasons" EntityType="Self.Reasons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Upload" EntityType="Self.Upload" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DeliveryForm" Association="Self.FK_DeliveryForm">
+            <End Role="Deliveries" EntitySet="Deliveries" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NationalityForm" Association="Self.FK_NationalityForm">
+            <End Role="Nationalities" EntitySet="Nationalities" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsPapersPriceForm" Association="Self.FK_NewsPapersPriceForm">
+            <End Role="NewsPapersPrices" EntitySet="NewsPapersPrices" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReasonForm" Association="Self.FK_ReasonForm">
+            <End Role="Reasons" EntitySet="Reasons" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateForm" Association="Self.FK_StateForm">
+            <End Role="States" EntitySet="States" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SwiftyNamesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOrdered" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK_DeliveryForm" FromRole="Deliveries" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsMarried" Type="Boolean" Nullable="false" />
+          <Property Name="IsDivorced" Type="Boolean" Nullable="false" />
+          <Property Name="IsCourtAvoid" Type="Boolean" Nullable="false" />
+          <Property Name="IsConvicted" Type="Boolean" Nullable="false" />
+          <Property Name="CurrentName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumbers" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProposedName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeliveryphoneAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeliveryAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOrdered" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDeliveredOutside" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmbassyDelivery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DeliveryCountry" Type="Int32" Nullable="false" />
+          <Property Name="FullAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmbassyAdrress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HowUHear" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ServiceComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nationality_NationalityId" Type="Int32" Nullable="false" />
+          <Property Name="State_Id" Type="Int32" Nullable="false" />
+          <Property Name="Reason_Id" Type="Int32" Nullable="false" />
+          <Property Name="NewsPapersPrice_Id" Type="Int32" Nullable="false" />
+          <Property Name="Delivery_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Delivery" Relationship="Self.FK_DeliveryForm" FromRole="Forms" ToRole="Deliveries" />
+          <NavigationProperty Name="Nationality" Relationship="Self.FK_NationalityForm" FromRole="Forms" ToRole="Nationalities" />
+          <NavigationProperty Name="NewsPapersPrice" Relationship="Self.FK_NewsPapersPriceForm" FromRole="Forms" ToRole="NewsPapersPrices" />
+          <NavigationProperty Name="Reason" Relationship="Self.FK_ReasonForm" FromRole="Forms" ToRole="Reasons" />
+          <NavigationProperty Name="State" Relationship="Self.FK_StateForm" FromRole="Forms" ToRole="States" />
+          <Property Name="TheNoticeOf" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Nationality">
+          <Key>
+            <PropertyRef Name="NationalityId" />
+          </Key>
+          <Property Name="NationalityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Abbreviation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adjective" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Person" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK_NationalityForm" FromRole="Nationalities" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="NewsPapersPrice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NewsPaper" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK_NewsPapersPriceForm" FromRole="NewsPapersPrices" ToRole="Forms" />
+          <Property Name="PaperImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PriceTag" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaperSlogan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticePrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Reason">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameChangeReasons" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK_ReasonForm" FromRole="Reasons" ToRole="Forms" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Forms" Relationship="Self.FK_StateForm" FromRole="States" ToRole="Forms" />
+        </EntityType>
+        <Association Name="FK_DeliveryForm">
+          <End Role="Deliveries" Type="Self.Delivery" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Deliveries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="Delivery_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NationalityForm">
+          <End Role="Nationalities" Type="Self.Nationality" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nationalities">
+              <PropertyRef Name="NationalityId" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="Nationality_NationalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NewsPapersPriceForm">
+          <End Role="NewsPapersPrices" Type="Self.NewsPapersPrice" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsPapersPrices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="NewsPapersPrice_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReasonForm">
+          <End Role="Reasons" Type="Self.Reason" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reasons">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="Reason_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateForm">
+          <End Role="States" Type="Self.State" Multiplicity="1" />
+          <End Role="Forms" Type="Self.Form" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Forms">
+              <PropertyRef Name="State_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SwiftyNamesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Deliveries" EntityType="Self.Delivery" />
+          <EntitySet Name="Forms" EntityType="Self.Form" />
+          <EntitySet Name="Nationalities" EntityType="Self.Nationality" />
+          <EntitySet Name="NewsPapersPrices" EntityType="Self.NewsPapersPrice" />
+          <EntitySet Name="Reasons" EntityType="Self.Reason" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <AssociationSet Name="FK_DeliveryForm" Association="Self.FK_DeliveryForm">
+            <End Role="Deliveries" EntitySet="Deliveries" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NationalityForm" Association="Self.FK_NationalityForm">
+            <End Role="Nationalities" EntitySet="Nationalities" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NewsPapersPriceForm" Association="Self.FK_NewsPapersPriceForm">
+            <End Role="NewsPapersPrices" EntitySet="NewsPapersPrices" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReasonForm" Association="Self.FK_ReasonForm">
+            <End Role="Reasons" EntitySet="Reasons" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateForm" Association="Self.FK_StateForm">
+            <End Role="States" EntitySet="States" />
+            <End Role="Forms" EntitySet="Forms" />
+          </AssociationSet>
+          <EntitySet Name="NoticeLevels" EntityType="SwiftyNamesModel.NoticeLevel" />
+          <EntitySet Name="CustomerDetails" EntityType="SwiftyNamesModel.CustomerDetail" />
+          <EntitySet Name="Uploads" EntityType="SwiftyNamesModel.Upload" />
+          <EntitySet Name="DayTypes" EntityType="SwiftyNamesModel.DayType" />
+          <EntitySet Name="PublicNotices" EntityType="SwiftyNamesModel.PublicNotice" />
+        </EntityContainer>
+        <EntityType Name="NoticeLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CustomerDetail">
+          <Key>
+            <PropertyRef Name="InfoId" />
+          </Key>
+          <Property Name="InfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SessionKey" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NewsPaperId" Type="Int32" Nullable="false" />
+          <Property Name="DayId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OldFullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NewFullName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Upload">
+          <Key>
+            <PropertyRef Name="UploadId" />
+          </Key>
+          <Property Name="UploadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionKey" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameOfFile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityFile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DayType">
+          <Key>
+            <PropertyRef Name="DayTypeId" />
+          </Key>
+          <Property Name="DayTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DayTypePrice" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PublicNotice">
+          <Key>
+            <PropertyRef Name="NoticeId" />
+          </Key>
+          <Property Name="NoticeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoticeEmail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticePhone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeWord" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoticeDayId" Type="Int32" Nullable="false" />
+          <Property Name="NoticeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NoticePaperId" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SwiftyNamesModelStoreContainer" CdmEntityContainer="SwiftyNamesEntities">
+          <EntitySetMapping Name="Deliveries">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.Delivery">
+              <MappingFragment StoreEntitySet="Deliveries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="DateOrdered" ColumnName="DateOrdered" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forms">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.Form">
+              <MappingFragment StoreEntitySet="Forms">
+                <ScalarProperty Name="TheNoticeOf" ColumnName="TheNoticeOf" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="IsMarried" ColumnName="IsMarried" />
+                <ScalarProperty Name="IsDivorced" ColumnName="IsDivorced" />
+                <ScalarProperty Name="IsCourtAvoid" ColumnName="IsCourtAvoid" />
+                <ScalarProperty Name="IsConvicted" ColumnName="IsConvicted" />
+                <ScalarProperty Name="CurrentName" ColumnName="CurrentName" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="PhoneNumbers" ColumnName="PhoneNumbers" />
+                <ScalarProperty Name="ProposedName" ColumnName="ProposedName" />
+                <ScalarProperty Name="DeliveryphoneAddress" ColumnName="DeliveryphoneAddress" />
+                <ScalarProperty Name="DeliveryAddress" ColumnName="DeliveryAddress" />
+                <ScalarProperty Name="DateOrdered" ColumnName="DateOrdered" />
+                <ScalarProperty Name="IsDeliveredOutside" ColumnName="IsDeliveredOutside" />
+                <ScalarProperty Name="EmbassyDelivery" ColumnName="EmbassyDelivery" />
+                <ScalarProperty Name="DeliveryCountry" ColumnName="DeliveryCountry" />
+                <ScalarProperty Name="FullAddress" ColumnName="FullAddress" />
+                <ScalarProperty Name="EmbassyAdrress" ColumnName="EmbassyAdrress" />
+                <ScalarProperty Name="HowUHear" ColumnName="HowUHear" />
+                <ScalarProperty Name="ServiceComment" ColumnName="ServiceComment" />
+                <ScalarProperty Name="Nationality_NationalityId" ColumnName="Nationality_NationalityId" />
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+                <ScalarProperty Name="Reason_Id" ColumnName="Reason_Id" />
+                <ScalarProperty Name="NewsPapersPrice_Id" ColumnName="NewsPapersPrice_Id" />
+                <ScalarProperty Name="Delivery_Id" ColumnName="Delivery_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nationalities">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.Nationality">
+              <MappingFragment StoreEntitySet="Nationalities">
+                <ScalarProperty Name="NationalityId" ColumnName="NationalityId" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="Adjective" ColumnName="Adjective" />
+                <ScalarProperty Name="Person" ColumnName="Person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsPapersPrices">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.NewsPapersPrice">
+              <MappingFragment StoreEntitySet="NewsPapersPrices">
+                <ScalarProperty Name="NoticePrice" ColumnName="NoticePrice" />
+                <ScalarProperty Name="PaperSlogan" ColumnName="PaperSlogan" />
+                <ScalarProperty Name="PriceTag" ColumnName="PriceTag" />
+                <ScalarProperty Name="PaperImage" ColumnName="PaperImage" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NewsPaper" ColumnName="NewsPaper" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reasons">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.Reason">
+              <MappingFragment StoreEntitySet="Reasons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NameChangeReasons" ColumnName="NameChangeReasons" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NoticeLevels">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.NoticeLevel">
+              <MappingFragment StoreEntitySet="NoticeLevel">
+                <ScalarProperty Name="NoticeName" ColumnName="NoticeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerDetails">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.CustomerDetail">
+              <MappingFragment StoreEntitySet="CustomerDetails">
+                <ScalarProperty Name="NewFullName" ColumnName="NewFullName" />
+                <ScalarProperty Name="OldFullName" ColumnName="OldFullName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="DayId" ColumnName="DayId" />
+                <ScalarProperty Name="NewsPaperId" ColumnName="NewsPaperId" />
+                <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="InfoId" ColumnName="InfoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uploads">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.Upload">
+              <MappingFragment StoreEntitySet="Upload">
+                <ScalarProperty Name="IdentityFile" ColumnName="IdentityFile" />
+                <ScalarProperty Name="NameOfFile" ColumnName="NameOfFile" />
+                <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
+                <ScalarProperty Name="UploadId" ColumnName="UploadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DayTypes">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.DayType">
+              <MappingFragment StoreEntitySet="DayType">
+                <ScalarProperty Name="DayTypePrice" ColumnName="DayTypePrice" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="DayTypeId" ColumnName="DayTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PublicNotices">
+            <EntityTypeMapping TypeName="SwiftyNamesModel.PublicNotice">
+              <MappingFragment StoreEntitySet="PublicNotice">
+                <ScalarProperty Name="NoticePaperId" ColumnName="NoticePaperId" />
+                <ScalarProperty Name="NoticeDate" ColumnName="NoticeDate" />
+                <ScalarProperty Name="NoticeDayId" ColumnName="NoticeDayId" />
+                <ScalarProperty Name="NoticeName" ColumnName="NoticeName" />
+                <ScalarProperty Name="NoticeWord" ColumnName="NoticeWord" />
+                <ScalarProperty Name="NoticePhone" ColumnName="NoticePhone" />
+                <ScalarProperty Name="NoticeEmail" ColumnName="NoticeEmail" />
+                <ScalarProperty Name="NoticeId" ColumnName="NoticeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
